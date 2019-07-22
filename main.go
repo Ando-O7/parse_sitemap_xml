@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	// xmlFile, err != os.Open()
 	// Read xml file
-	url := "https://d.excite.co.jp/sitemap/denwa/sitemap_prof.xml"
+	url := "https://www.google.com/sitemap.xml"
 	response, err := http.Get(url)
 
+	// check error
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
