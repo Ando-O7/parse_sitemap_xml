@@ -7,6 +7,14 @@ import (
 	"os"
 )
 
+type Page struct {
+	Loc string `xml:"loc"`
+}
+type Sitemap struct {
+	XMLName xml.Name `xml:"urlset"`
+	Pages   []Page   `xml:"url"`
+}
+
 func main() {
 	// Read xml file
 	url := "https://www.google.com/sitemap.xml"
