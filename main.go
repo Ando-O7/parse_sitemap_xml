@@ -19,7 +19,11 @@ type Sitemap struct {
 }
 
 func main() {
-	url := "https://www.google.com/sitemap.xml"
+	// check sitemap url
+	if len(os.Args) < 2 {
+		log.Fatal("ERROR: please input sitemap URL as an argument.")
+	}
+	url := os.Args[1]
 	sitemap := GetSitemap(url)
 	for _, page := range sitemap {
 		fmt.Println(page.Loc)
