@@ -13,8 +13,9 @@ type Page struct {
 	Loc string `xml:"loc"`
 }
 type Sitemap struct {
-	XMLName xml.Name `xml:"urlset"`
-	Pages   []Page   `xml:"url"`
+	// Change according to sitemap structure
+	XMLName xml.Name `xml:"sitemapindex"`
+	Pages   []Page   `xml:"sitemap"`
 }
 
 func main() {
