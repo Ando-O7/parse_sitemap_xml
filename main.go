@@ -19,8 +19,8 @@ type Sitemap struct {
 
 func main() {
 	// check sitemap url
-	if len(os.Args) < 2 {
-		log.Fatal("ERROR: please input sitemap URL as an argument.")
+	if len(os.Args) < 3 {
+		log.Fatal("ERROR: please input sitemap URL and output file name as an argument.")
 	}
 	url := os.Args[1]
 	sitemap := GetSitemap(url)
@@ -29,7 +29,8 @@ func main() {
 		pages = append(pages, page.Loc...)
 		pages = append(pages, "\n"...)
 	}
-	OutputFile(pages)
+	fileName := os.Args[2]
+	OutputFile(pages, fileName)
 }
 
 func GetSitemap(url string) []Page {
@@ -44,8 +45,8 @@ func GetSitemap(url string) []Page {
 	return sitemap.Pages
 }
 
-func OutputFile(pages []byte) {
-	file, err := os.Create("sitemaplist.txt")
+func OutputFile(pages []byte, fileName string) {
+	file, err := os.Create(fileName)
 	checkErr(err)
 	defer file.Close()
 	file.Write((pages))
