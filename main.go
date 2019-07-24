@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/xml"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -25,9 +24,12 @@ func main() {
 	}
 	url := os.Args[1]
 	sitemap := GetSitemap(url)
+	var pages = make([]byte, 0, 100)
 	for _, page := range sitemap {
-		fmt.Println(page.Loc)
+		pages = append(pages, page.Loc...)
+		pages = append(pages, "\n"...)
 	}
+	OutputFile(pages)
 }
 
 func GetSitemap(url string) []Page {
