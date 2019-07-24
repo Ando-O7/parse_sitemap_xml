@@ -42,6 +42,13 @@ func GetSitemap(url string) []Page {
 	return sitemap.Pages
 }
 
+func OutputFile(pages []byte) {
+	file, err := os.Create("sitemaplist.txt")
+	checkErr(err)
+	defer file.Close()
+	file.Write((pages))
+}
+
 func checkErr(err error) {
 	if err != nil {
 		log.Fatal(err)
